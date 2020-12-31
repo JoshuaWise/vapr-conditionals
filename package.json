@@ -1,5 +1,5 @@
 {
-  "name": "vapr-conditions",
+  "name": "vapr-conditionals",
   "version": "0.1.0",
   "description": "A Vapr plugin for handling conditional requests",
   "main": "lib/index.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JoshuaWise/vapr-conditions.git"
+    "url": "git+https://github.com/JoshuaWise/vapr-conditionals.git"
   },
   "keywords": [
     "vapr",
@@ -29,7 +29,7 @@
   "author": "Joshua Wise <joshuathomaswise@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JoshuaWise/vapr-conditions/issues"
+    "url": "https://github.com/JoshuaWise/vapr-conditionals/issues"
   },
-  "homepage": "https://github.com/JoshuaWise/vapr-conditions#readme"
+  "homepage": "https://github.com/JoshuaWise/vapr-conditionals#readme"
 }

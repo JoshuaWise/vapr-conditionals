@@ -1,10 +1,10 @@
-# vapr-conditions [![Build Status](https://travis-ci.org/JoshuaWise/vapr-conditions.svg?branch=master)](https://travis-ci.org/JoshuaWise/vapr-conditions)
+# vapr-conditionals [![Build Status](https://travis-ci.org/JoshuaWise/vapr-conditionals.svg?branch=master)](https://travis-ci.org/JoshuaWise/vapr-conditionals)
 
 ## Installation
 
 ```bash
 npm install --save vapr
-npm install --save vapr-conditions
+npm install --save vapr-conditionals
 ```
 
 ## Usage
@@ -15,11 +15,11 @@ Conditional requests can make your server more efficient by saving bandwidth on 
 
 ```js
 const crypto = require('crypto');
-const conditions = require('vapr-conditions');
+const conditionals = require('vapr-conditionals');
 const app = require('vapr')();
 const route = app.get('/foo');
 
-route.use(conditions({
+route.use(conditionals({
   etag: res => crypto.createHash('md5').update(res.body).digest('base64'),
 }));
 ```
