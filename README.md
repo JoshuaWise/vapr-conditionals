@@ -13,7 +13,7 @@ This plugin enables [conditional requests](https://developer.mozilla.org/en-US/d
 
 Conditional requests can make your server more efficient by saving bandwidth on responses that don't change very often. Also, they can empower clients to avoid certain race conditions.
 
-When you add this plugin to a route, a new function called `req.validate()` becomes available. You *must* call `req.validate()` exactly once before returning a successful response. When you do, you can provide it with a [`lastModified`](optionslastmodified--null) date, a [`weak`](optionsweak--null) ETag, or a [`strong`](optionsstrong--null) ETag (details down below). The `req.validate()` function can throw a `304 Not Modified` or a `412 Precondition Failed` response, or it can simply return normally, allowing your app to generate its typical (`2xx`) response.
+When you add this plugin to a route, a new function called `req.validate()` becomes available. You *must* call `req.validate()` exactly once before returning a successful response. When you do, you can provide it with a [`lastModified`](#optionslastmodified--null) date, a [`weak`](#optionsweak--null) ETag, or a [`strong`](#optionsstrong--null) ETag (details down below). The `req.validate()` function can throw a `304 Not Modified` or a `412 Precondition Failed` response, or it can simply return normally, allowing your app to generate its typical (`2xx`) response.
 
 ```js
 const conditionals = require('vapr-conditionals');
@@ -50,7 +50,7 @@ Don't use this approach if any of the following statements are true:
 
 ### options.weak = *null*
 
-If you need to invalidate caches based on factors other than a [`lastModified`](optionslastmodified--null) date, you can instead call `req.validate()` with the `weak` option, which must be an array of strings and/or [`Buffers`](https://nodejs.org/api/buffer.html). All data in the array will be hashed and combined to generate a single weak ETag. If any element of the array is different from one request to another, the generated ETags will also be different (which will invalidate caches). If the requested resource does not exist, you can use `null` instead of an array (or simply call `req.validate()` without any options).
+If you need to invalidate caches based on factors other than a [`lastModified`](#optionslastmodified--null) date, you can instead call `req.validate()` with the `weak` option, which must be an array of strings and/or [`Buffers`](https://nodejs.org/api/buffer.html). All data in the array will be hashed and combined to generate a single weak ETag. If any element of the array is different from one request to another, the generated ETags will also be different (which will invalidate caches). If the requested resource does not exist, you can use `null` instead of an array (or simply call `req.validate()` without any options).
 
 ```js
 // ISO strings have millisecond resolution
@@ -59,13 +59,13 @@ const isoString = new Date(someTimestamp).toISOString();
 req.validate({ weak: [isoString, requestedLanguage] });
 ```
 
-When you use this approach, an ETag header will be sent, but the Last-Modified header will *not* be sent unless you also provide a [`lastModified`](optionslastmodified--null) date.
+When you use this approach, an ETag header will be sent, but the Last-Modified header will *not* be sent unless you also provide a [`lastModified`](#optionslastmodified--null) date.
 
 Don't use this approach if your clients need to use the If-Match header to avoid certain race conditions.
 
 ### options.strong = *null*
 
-If your clients need to use the If-Match header to avoid certain race conditions, you must use *strong* ETags instead of a *weak* ones. Strong ETags are much harder to generate correctly, so they're *not recommended* unless you truly need them. To use strong ETags, call `req.validate()` with the `strong` option, which behaves exactly like the [`weak`](optionsweak--null) option.
+If your clients need to use the If-Match header to avoid certain race conditions, you must use *strong* ETags instead of a *weak* ones. Strong ETags are much harder to generate correctly, so they're *not recommended* unless you truly need them. To use strong ETags, call `req.validate()` with the `strong` option, which behaves exactly like the [`weak`](#optionsweak--null) option.
 
 However, when using the `strong` option, you must adhere to strict requirements that cannot be enforced by this plugin:
 
@@ -88,4 +88,4 @@ if (req.headers.has('accept-encoding')) {
 req.validate({ strong: etagParts });
 ```
 
-When you use this approach, an ETag header will be sent, but the Last-Modified header will *not* be sent unless you also provide a [`lastModified`](optionslastmodified--null) date.
+When you use this approach, an ETag header will be sent, but the Last-Modified header will *not* be sent unless you also provide a [`lastModified`](#optionslastmodified--null) date.
