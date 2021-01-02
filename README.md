@@ -71,7 +71,7 @@ However, when using the `strong` option, you must adhere to strict requirements 
 
 - A strong ETag must change whenever *any* observable change to the resource payload changes.
 - A strong ETag must be unique across all versions of a resource over time.
-- A strong ETag must be different for different representations of the same resource. For example, if [content negotiation](https://tools.ietf.org/html/rfc7231#section-3.4) is used to conditionally apply gzip compression (Content-Encoding) to a resource, that resource's ETag must be different between the gzipped and non-gzipped versions. It's a common mistake to forget this. If you apply compression via a plugin (like [`vapr-compress`](https://github.com/JoshuaWise/vapr-compress)), you should include the request's Accept-Encoding header in your ETag's array.
+- A strong ETag must be different for different representations of the same resource. For example, if [content negotiation](https://tools.ietf.org/html/rfc7231#section-3.4) is used to conditionally apply gzip compression (Content-Encoding) to a resource, that resource's ETag must be different between the gzipped and non-gzipped versions. It's a common mistake to forget this. If you apply compression via a plugin (like [`vapr-compress`](https://github.com/JoshuaWise/vapr-compress)), you should include the request's Accept-Encoding header in your ETag's array. Keep in mind that this also applies to any other transformations that you apply to the response body after it is generated.
 
 For more details on the requirements of strong ETags, [read here](https://tools.ietf.org/html/rfc7232#section-2.1).
 
