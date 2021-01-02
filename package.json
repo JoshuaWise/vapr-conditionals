@@ -1,6 +1,6 @@
 {
   "name": "vapr-conditionals",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A Vapr plugin for handling conditional requests",
   "main": "lib/index.js",
   "peerDependencies": {
