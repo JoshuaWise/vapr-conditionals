@@ -59,8 +59,6 @@ req.validate({ weak: [isoString, requestedLanguage] });
 
 When you use this approach, an ETag header will be sent, but the Last-Modified header will *not* be sent unless you also provide a [`lastModified`](#optionslastmodified--null) date.
 
-Don't use this approach if your clients need to use the If-Match header to avoid certain race conditions.
-
 ### options.strong = *null*
 
 If your clients need to use the If-Match header to avoid certain race conditions, you must use *strong* ETags instead of a *weak* ones. Strong ETags are much harder to generate correctly, so they're *not recommended* unless you truly need them. To use strong ETags, call `req.validate()` with the `strong` option, which behaves exactly like the [`weak`](#optionsweak--null) option.
