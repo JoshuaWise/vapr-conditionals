@@ -21,6 +21,8 @@
     "vapr",
     "plugin",
     "middleware",
+    "etag",
+    "last-modified",
     "if-match",
     "if-none-match",
     "if-modified-since",
