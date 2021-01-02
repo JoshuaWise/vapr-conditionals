@@ -31,7 +31,7 @@ Any checks that you perform which may cause a `3xx` or `4xx` response should be 
 
 ### options.lastModified = *null*
 
-The simplest way to use this plugin is to call `req.validate()` with the `lastModified` option, which must be a [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object. The given date should represent the last time that the requested resource was modified (or created). If the requested resource does not exist, you can use `null` instead of a `Date` object (or simply call `req.validate()` without any options).
+The simplest way to use this plugin is to call `req.validate()` with the `lastModified` option, which must be a [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object. The given date represents the last time that the requested resource was modified (or created). If the requested resource does not exist, you can use `null` instead of a `Date` object (or simply call `req.validate()` without any options).
 
 ```js
 req.validate({ lastModified: new Date(someTimestamp) });
