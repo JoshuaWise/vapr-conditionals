@@ -9,7 +9,7 @@ npm install --save vapr-conditionals
 
 ## Usage
 
-This plugin enables [conditional requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests). Specifically, it handles If-Match, If-None-Match, If-Modified-Since, and If-Unmodified-Since headers, while providing clients with ETag and Last-Modified headers. Conditional requests can make your server more efficient by saving bandwidth on responses that don't change very often, and they can empower clients to avoid certain race conditions.
+This plugin enables [conditional requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests). Specifically, it handles the If-Match, If-None-Match, If-Modified-Since, and If-Unmodified-Since headers, while providing clients with ETag and Last-Modified headers. Conditional requests can make your server more efficient by saving bandwidth on responses that don't change very often, and they can empower clients to avoid certain race conditions.
 
 When you add this plugin to a route, a new function called `req.validate()` becomes available. You *must* call `req.validate()` exactly once before returning a successful response. When you do, you can provide it with a [`lastModified`](#optionslastmodified--null) date, a [`weak`](#optionsweak--null) ETag, or a [`strong`](#optionsstrong--null) ETag (details down below). The `req.validate()` function can throw a `304 Not Modified` or a `412 Precondition Failed` response, or it can simply return normally, allowing your app to generate its typical (`2xx`) response.
 
