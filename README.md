@@ -13,7 +13,7 @@ This plugin enables [conditional requests](https://developer.mozilla.org/en-US/d
 
 Conditional requests can make your server more efficient by saving bandwidth on responses that don't change very often. Also, they can empower clients to avoid certain race conditions.
 
-When you add this plugin to a route, a new function called `req.validate()` becomes available. You *must* call `req.validate()` exactly once before returning a successful response. When you do, you can provide it with a `lastModified` date, a `weak` ETag, or a `strong` ETag (see below for details). The `req.validate()` function can throw a `304 Not Modified` or a `412 Precondition Failed` response, or it can simply return normally, allowing your app to generate its typical (`2xx`) response.
+When you add this plugin to a route, a new function called `req.validate()` becomes available. You *must* call `req.validate()` exactly once before returning a successful response. When you do, you can provide it with a [`lastModified`](optionslastmodified--null) date, a [`weak`](optionsweak--null) ETag, or a [`strong`](optionsstrong--null) ETag (details down below). The `req.validate()` function can throw a `304 Not Modified` or a `412 Precondition Failed` response, or it can simply return normally, allowing your app to generate its typical (`2xx`) response.
 
 ```js
 const conditionals = require('vapr-conditionals');
