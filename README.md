@@ -31,7 +31,7 @@ Any checks that you perform which may cause a `3xx` or `4xx` response should be 
 
 ### options.lastModified = *null*
 
-The simplest way to use this plugin is to call `req.validate()` with the `lastModified` option, which must be a [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object. The given date represents the last time that the requested resource was modified (or created). If the requested resource does not exist, you can use `null` instead of a `Date` object (or simply call `req.validate()` without any options).
+The simplest way to use this plugin is to call `req.validate()` with the `lastModified` option, which must be a [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object. The given date represents the last time that the requested resource was modified (or created). If the requested resource does not exist, you should use `null` instead of a `Date` object (or simply call `req.validate()` without any options).
 
 ```js
 req.validate({ lastModified: new Date(someTimestamp) });
@@ -48,7 +48,7 @@ Don't use this approach if any of the following statements are true:
 
 ### options.weak = *null*
 
-If you need to invalidate caches based on factors other than a [`lastModified`](#optionslastmodified--null) date, you can instead call `req.validate()` with the `weak` option, which must be an array of strings and/or [`Buffers`](https://nodejs.org/api/buffer.html). All data in the array will be hashed and combined to generate a single weak ETag. If any element of the array is different from one request to another, the generated ETags will also be different (which will invalidate caches). If the requested resource does not exist, you can use `null` instead of an array (or simply call `req.validate()` without any options).
+If you need to invalidate caches based on factors other than a [`lastModified`](#optionslastmodified--null) date, you can instead call `req.validate()` with the `weak` option, which must be an array of strings and/or [`Buffers`](https://nodejs.org/api/buffer.html). All data in the array will be hashed and combined to generate a single weak ETag. If any element of the array is different from one request to another, the generated ETags will also be different (which will invalidate caches). If the requested resource does not exist, you should use `null` instead of an array (or simply call `req.validate()` without any options).
 
 ```js
 // ISO strings have millisecond resolution
